@@ -2,6 +2,7 @@
 import React from 'react';
 import Lottie from "lottie-react";
 import iphoneRepair from "./iphone-repair.json";
+import { Link } from 'react-router-dom';
 export const Header = () => {
     return (
       <div className="relative">
@@ -30,8 +31,8 @@ export const Header = () => {
                 <p className="max-w-xl mb-4 text-base text-gray-200 md:text-lg">
                   Welcome to my online shop. I can help you with any critical issue with phone and fix your problem. If you have any problem with hardware, software or anything else. I am ready to help you.
                 </p>
-                <a
-                  href="/services"
+                <Link
+                  to="/services"
                   aria-label=""
                   className="inline-flex items-center font-semibold tracking-wider transition-colors duration-200 text-teal-accent-400 hover:text-teal-accent-700"
                 >
@@ -43,7 +44,7 @@ export const Header = () => {
                   >
                     <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
                   </svg>
-                </a>
+                </Link>
               </div>
               <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
                 <div className=" rounded-3xl bg-white p-7 sm:p-10">

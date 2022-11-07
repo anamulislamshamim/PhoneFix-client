@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import logo from "./logo1.jpg";
 export const Nav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
   
@@ -14,23 +14,9 @@ export const Nav = () => {
                 title="Company"
                 class="inline-flex items-center mr-8"
               >
-                <svg
-                  class="w-8 text-teal-accent-400"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeMiterlimit="10"
-                  stroke="currentColor"
-                  fill="none"
-                >
-                  <rect x="3" y="1" width="7" height="12" />
-                  <rect x="3" y="17" width="7" height="6" />
-                  <rect x="14" y="1" width="7" height="6" />
-                  <rect x="14" y="11" width="7" height="12" />
-                </svg>
-                <span class="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
-                  Company
+                <img src={logo} style={{width:"30px",height:"30px",borderRadius:"50%"}} alt="" />
+                <span class="ml-2 text-xl font-bold tracking-wide text-gray-100">
+                  <span className='text-green-400'>P</span>hone<span className='text-green-400'>F</span>ix
                 </span>
               </a>
               <ul class="flex items-center hidden space-x-8 lg:flex">
