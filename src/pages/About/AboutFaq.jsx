@@ -41,7 +41,7 @@ const Item = ({ title, children }) => {
   
   export const AboutFaq = () => {
     return (
-        <div class="space-y-4 lg:mr-3 w-full">
+        <div className="space-y-4 lg:mr-3 w-full">
             <Item className="mr-5" title="18 years experience!">
               I have been working for more than 18 years as a electrician. I can fix any phone devices.
             </Item>
