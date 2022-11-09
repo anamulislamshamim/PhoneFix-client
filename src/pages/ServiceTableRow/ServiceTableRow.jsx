@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ServiceTableRow = ({ service, deleteHandeler }) => {
+    // console.log(service._id);
     return (
         <tr>
             <th>
