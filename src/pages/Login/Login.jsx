@@ -24,7 +24,16 @@ export const Login = () => {
         .catch(() => {
             toast.error("Invalid email or password");
         });
-    }
+    };
+    const googleSignInHandeler = () => {
+      signInWithGoogle()
+      .then(() => {
+        toast.success("Login successfull!");
+        navigate(from, { replace: true })
+      }).catch(() => {
+        toast.error("Invalid email!");
+      })
+    };
     return (
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         <div className="flex flex-col items-center justify-between w-full mb-10 lg:flex-row">
@@ -83,7 +92,7 @@ export const Login = () => {
                   </div>
                   <div className="mt-4 mb-2 sm:mb-4">
                                 <button
-                                    onClick={signInWithGoogle}
+                                    onClick={googleSignInHandeler}
                                     className="inline-flex items-center cursor-pointer justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-green-600 focus:shadow-outline focus:outline-none"
                                 >
                                     <span className='mr-2'><FaGoogle /></span> Google
