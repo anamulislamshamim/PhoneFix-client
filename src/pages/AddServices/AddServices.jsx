@@ -12,7 +12,7 @@ export const AddServices = () => {
     title("AddService-PhoneFix");
     const [services, setServices] = useState([]);
     const deleteHandeler = (id) => {
-        fetch(`http://localhost:4000/service/delete/${ id }`,{
+        fetch(`https://phonefix-server.vercel.app/service/delete/${ id }`,{
             method:"DELETE"
         }).then(res => res.json())
         .then(result => {
@@ -24,7 +24,7 @@ export const AddServices = () => {
         })
     };
     useEffect(() => {
-        fetch(`http://localhost:4000/add-service/${ email }`, {
+        fetch(`https://phonefix-server.vercel.app/add-service/${ email }`, {
           headers:{
             auth_token:`Bearer ${ localStorage.getItem("access_token")}`
           }
@@ -54,7 +54,7 @@ export const AddServices = () => {
             description:description
         };
         console.log(newService);
-        fetch(`http://localhost:4000/add-service`, {
+        fetch(`https://phonefix-server.vercel.app/add-service`, {
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(newService)

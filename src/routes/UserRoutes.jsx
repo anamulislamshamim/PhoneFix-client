@@ -26,7 +26,7 @@ const router = createBrowserRouter([
             },
             {
                 path:"/services/:id",
-                loader:({params}) => fetch(`http://localhost:4000/services/${ params.id }`),
+                loader:({params}) => fetch(`https://phonefix-server.vercel.app/services/${ params.id }`),
                 element:<CardDetails />
             },
             {
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
             },
             {
                 path:"/add-review/:id",
-                loader: ({ params }) => fetch(`http://localhost:4000/services/${ params.id }`),
+                loader: ({ params }) => fetch(`https://phonefix-server.vercel.app/services/${ params.id }`),
                 element: <PrivateRoute><AddReview /></PrivateRoute>
             },
             {
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
             },
             {
                 path:"/review/update/:id",
-                loader:({params}) => fetch(`http://localhost:4000/reviews/${ params.id }`),
+                loader:({params}) => fetch(`https://phonefix-server.vercel.app/reviews/${ params.id }`),
                 element:<PrivateRoute><UpdateReview /></PrivateRoute>
             },
             {
@@ -65,7 +65,7 @@ const router = createBrowserRouter([
             },
             {
                 path:"/service/update/:id",
-                loader: ({ params }) => fetch(`http://localhost:4000/services/${ params.id }`),
+                loader: ({ params }) => fetch(`https://phonefix-server.vercel.app/services/${ params.id }`),
                 element:<PrivateRoute><ServiceUpdate /></PrivateRoute>
             }
         ]

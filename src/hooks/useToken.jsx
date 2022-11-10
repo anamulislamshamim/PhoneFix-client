@@ -1,6 +1,6 @@
 const useToken = () => {
     const token = (currentUser) => {
-        fetch("http://localhost:4000/jwt", {
+        fetch("https://phonefix-server.vercel.app/jwt", {
             method: "POST",
             headers: { 'content-type': "application/json" },
             body: JSON.stringify(currentUser)

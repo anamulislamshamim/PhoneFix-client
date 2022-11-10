@@ -22,7 +22,7 @@ export const AddReview = () => {
           image:user.photoURL
         };
         console.log(userReview);
-        fetch(`http://localhost:4000/review`, {
+        fetch(`https://phonefix-server.vercel.app/review`, {
           method:"POST",
           headers:{"Content-Type":"application/json"},
           body:JSON.stringify(userReview)

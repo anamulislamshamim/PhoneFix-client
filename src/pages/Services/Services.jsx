@@ -10,7 +10,7 @@ export const Services = () => {
     const title = useTitle();
     title("Service-PhoneFix");
     useEffect(() => {
-        fetch("http://localhost:4000/services")
+        fetch("https://phonefix-server.vercel.app/services")
             .then(res => res.json())
             .then(data => {
                 setServices(data);

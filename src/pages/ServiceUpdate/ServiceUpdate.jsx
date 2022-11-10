@@ -19,7 +19,7 @@ const ServiceUpdate = () => {
             description:description
         };
         console.log(updateService);
-        fetch(`http://localhost:4000/service/update/${service._id}`, {
+        fetch(`https://phonefix-server.vercel.app/service/update/${service._id}`, {
             method:"PUT",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(updateService)

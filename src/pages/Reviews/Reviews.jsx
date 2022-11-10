@@ -10,7 +10,7 @@ export const Reviews = () => {
   const { user } = useContext(authContext);
   const [reviews, setReviews] = useState([]);
   const deleteReview = (id) => {
-    fetch(`http://localhost:4000/review/delete/${ id }`, {
+    fetch(`https://phonefix-server.vercel.app/review/delete/${ id }`, {
       method:"DELETE"
     })
     .then(res => res.json())
@@ -22,7 +22,7 @@ export const Reviews = () => {
     })
   };
   useEffect(() => {
-    fetch("http://localhost:4000/reviews")
+    fetch("https://phonefix-server.vercel.app/reviews")
       .then(res => res.json())
       .then(datas => {
         if (datas.length > 0) {

@@ -8,7 +8,7 @@ export const ThreeProducts = () => {
 
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:4000/home/services")
+        fetch("https://phonefix-server.vercel.app/home/services")
             .then(res => res.json())
             .then(data => setServices(data))
     }, []);

@@ -8,7 +8,7 @@ export const UpdateReview = () => {
     const updateHandeler = (event) => {
         event.preventDefault();
         const updateMessage = event.target.message.value;
-        fetch(`http://localhost:4000/review/update`,{
+        fetch(`https://phonefix-server.vercel.app/review/update`,{
             method:"PATCH",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify({id:review._id, review:updateMessage})

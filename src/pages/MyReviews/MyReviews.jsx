@@ -13,7 +13,7 @@ export const MyReviews = () => {
     title("MyReviews-PhoneFix");
     const [reviews, setReviews] = useState([]);
     const deleteHandeler = (id) => {
-        fetch(`http://localhost:4000/my-review/delete/${ id }`,{
+        fetch(`https://phonefix-server.vercel.app/my-review/delete/${ id }`,{
             method:"DELETE"
         }).then(res => res.json()).then(result => {
             if(result.deletedCount > 0){
@@ -23,7 +23,7 @@ export const MyReviews = () => {
         })
     }
     useEffect(() => {
-        fetch(`http://localhost:4000/reviews/${ email }`, {
+        fetch(`https://phonefix-server.vercel.app/reviews/${ email }`, {
             headers:{
                 auth_token:`Bearer ${ localStorage.getItem('access_token')}`
             }
