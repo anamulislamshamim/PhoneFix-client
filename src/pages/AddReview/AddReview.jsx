@@ -29,7 +29,7 @@ export const AddReview = () => {
         })
         .then(res => res.json())
         .then(data => {
-          console.log(data);
+          toast.success("Review successfully added!")
           form.reset();
         }).catch(err => {
           toast.error("Something went wrong!");
