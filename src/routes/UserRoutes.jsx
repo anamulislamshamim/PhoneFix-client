@@ -56,7 +56,7 @@ const router = createBrowserRouter([
             },
             {
                 path:"/review/update/:id",
-                loader:({params}) => fetch(`https://phonefix-server.vercel.app/reviews/${ params.id }`),
+                loader:({params}) => fetch(`https://phonefix-server.vercel.app/review/${ params.id }`),
                 element:<PrivateRoute><UpdateReview /></PrivateRoute>
             },
             {

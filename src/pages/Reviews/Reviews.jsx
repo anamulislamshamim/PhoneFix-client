@@ -10,27 +10,31 @@ export const Reviews = () => {
   const { user } = useContext(authContext);
   const [reviews, setReviews] = useState([]);
   const deleteReview = (id) => {
-    fetch(`https://phonefix-server.vercel.app/review/delete/${ id }`, {
-      method:"DELETE"
+    fetch(`https://phonefix-server.vercel.app/review/delete/${id}`, {
+      method: "DELETE"
     })
-    .then(res => res.json())
-    .then(data => {
-      if(data.deletedCount > 0){
-        const remaining = reviews.filter(review => review._id !== id);
-        setReviews(remaining);
-      }
-    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.deletedCount > 0) {
+          const remaining = reviews.filter(review => review._id !== id);
+          setReviews(remaining);
+        }
+      })
   };
   useEffect(() => {
     fetch("https://phonefix-server.vercel.app/reviews")
       .then(res => res.json())
       .then(datas => {
         if (datas.length > 0) {
-          const myreviews = datas.filter(data => data.email === user.email);
-          const othersReviews = datas.filter(data => data.email !== user.email);
-          myreviews.forEach(element => element.myreview = true);
-          const totalreviws = [...myreviews, ...othersReviews];
-          setReviews(totalreviws);
+          if (user) {
+            const myreviews = datas.filter(data => data.email === user.email);
+            const othersReviews = datas.filter(data => data.email !== user.email);
+            myreviews.forEach(element => element.myreview = true);
+            const totalreviws = [...myreviews, ...othersReviews];
+            setReviews(totalreviws);
+          }else {
+            setReviews(datas);
+          };
         }
 
       })
@@ -42,7 +46,7 @@ export const Reviews = () => {
       {/* <Link className='p-2 bg-green-400 text-white font-semibold rounded' to="/add-review"><button className='mb-5'>Add your review</button></Link> */}
       <div className="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
         {
-          reviews.length === 0 ? "No reviws available!" : reviews.map(review => <ReviewCard deleteReview={ deleteReview } key={review._id} review={review} />)
+          reviews.length === 0 ? "No reviws available!" : reviews.map(review => <ReviewCard deleteReview={deleteReview} key={review._id} review={review} />)
         }
       </div>
     </div>

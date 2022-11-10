@@ -5,10 +5,11 @@ import { toast } from 'react-toastify';
 export const UpdateReview = () => {
     const navigate = useNavigate();
     const review = useLoaderData();
+    // console.log("update review: ", review);
     const updateHandeler = (event) => {
         event.preventDefault();
         const updateMessage = event.target.message.value;
-        fetch(`https://phonefix-server.vercel.app/review/update`,{
+        fetch(`https://phonefix-server.vercel.app/reviews/update`,{
             method:"PATCH",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify({id:review._id, review:updateMessage})
@@ -25,7 +26,7 @@ export const UpdateReview = () => {
     }
     return (
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-        <div className="flex flex-col items-center justify-between w-full mb-10 lg:flex-row lg:flex-row-reverse">
+        <div className="flex flex-col items-center justify-between w-full mb-10 lg:flex-row-reverse">
           <div className="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
             <div className="max-w-xl mb-6">
               <div>
@@ -39,9 +40,7 @@ export const UpdateReview = () => {
               </h2>
             </div>
             <form onSubmit={updateHandeler}>
-              <textarea name="message" id="" cols="30" rows="10" defaultValue={ review.review } className='p-2 w-full' autoFocus={true}>
-            
-              </textarea>
+              <textarea name="message" id="" cols="30" rows="10" defaultValue={ review.review } className='p-2 w-full' autoFocus={true} />
               <button type='submit' className="btn btn-info rounded text-white w-full">update</button>
             </form>
           </div>

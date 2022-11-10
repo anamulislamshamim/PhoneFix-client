@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useCallback } from 'react';
 import { toast } from 'react-toastify';
 import { authContext } from '../../contexts/AuthContext';
 import useTitle from '../../hooks/useTitle';
