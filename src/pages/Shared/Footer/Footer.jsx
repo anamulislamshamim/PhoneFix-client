@@ -113,14 +113,13 @@ export const Footer = () => {
             </a>
           </div>
           <p className="mt-4 text-sm text-white">
-            Bacon ipsum dolor amet short ribs pig sausage prosciutto chicken
-            spare ribs salami.
+            I am always here to fix your problem. Best of luck.
           </p>
         </div>
       </div>
       <div className="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
         <p className="text-sm text-white">
-          © Copyright 2020 Lorem Inc. All rights reserved.
+          © Copyright 2022. All rights reserved by Developer Shamim.
         </p>
         <ul className="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
           <li>
