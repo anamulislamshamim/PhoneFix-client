@@ -4,8 +4,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { authContext } from '../../contexts/AuthContext';
 import { FaGoogle } from 'react-icons/fa';
+import useToken from '../../hooks/useToken';
 
 export const Register = () => {
+    const token = useToken();
     const [accept, setAccept] = useState(false);
     const { registerWithEmailAndPassword, signInWithGoogle } = useContext(authContext);
     const navigate = useNavigate();
@@ -16,15 +18,17 @@ export const Register = () => {
         const profilePicture = form.profilePicture.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(fullName,profilePicture, email, password);
+        console.log(fullName, profilePicture, email, password);
         registerWithEmailAndPassword(email, password)
             .then(result => {
                 if (result) {
                     const user = result.user;
-                    user.displayName=fullName;
+                    user.displayName = fullName;
                     user.photoURL = profilePicture;
+                    token({email:email});
                     toast.success("Registered successfully!");
                     form.reset();
+                    navigate("/");
                 };
                 console.log(result.user);
             }).catch(() => {
@@ -33,16 +37,20 @@ export const Register = () => {
     };
     const googleSignInHandeler = () => {
         signInWithGoogle()
-        .then(() => {
-          toast.success("Login successfull!");
-          navigate("/");
-        }).catch(() => {
-          toast.error("Invalid email!");
-        })
-      };
+            .then((result) => {
+                const user = result.user;
+                // jwt
+                token({email:user.email});
+                toast.success("Login successfull!");
+                
+                navigate("/");
+            }).catch(() => {
+                toast.error("Invalid email!");
+            })
+    };
     return (
         <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-            <div className="flex flex-col items-center justify-between w-full mb-10 lg:flex-row lg:flex-row-reverse">
+            <div className="flex flex-col items-center justify-between w-full mb-10 lg:flex-row-reverse">
                 <div className="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
                     <div className="max-w-xl mb-6">
                         <img src="https://img.freepik.com/free-vector/sign-up-concept-illustration_114360-7865.jpg?w=826&t=st=1667980906~exp=1667981506~hmac=f3613273bd796d7c8b4f994b811c5e44990b07aa0f7a98a52f43fdb53e144e79" alt="" />

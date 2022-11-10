@@ -4,9 +4,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { authContext } from '../../contexts/AuthContext';
 import { FaGoogle } from 'react-icons/fa';
+import useToken from '../../hooks/useToken';
 
 export const Login = () => {
     const { loginWithEmailAndPassword, signInWithGoogle } = useContext(authContext);
+    const token = useToken();
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
@@ -19,6 +21,8 @@ export const Login = () => {
         .then(() => {
             toast.success("Login successfull!");
             form.reset();
+            const currentUser = { email: email };
+            token(currentUser);
             navigate(from, { replace: true });
         })
         .catch(() => {
@@ -27,8 +31,11 @@ export const Login = () => {
     };
     const googleSignInHandeler = () => {
       signInWithGoogle()
-      .then(() => {
+      .then((result) => {
+        const user = result.user;
         toast.success("Login successfull!");
+        // jwt token
+        token({email:user.email});
         navigate(from, { replace: true })
       }).catch(() => {
         toast.error("Invalid email!");

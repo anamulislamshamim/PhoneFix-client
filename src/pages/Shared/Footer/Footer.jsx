@@ -27,18 +27,17 @@ export const Footer = () => {
               <rect x="14" y="1" width="7" height="6" />
               <rect x="14" y="11" width="7" height="12" />
             </svg>
-            <span className="ml-2 text-xl font-bold tracking-wide text-white uppercase">
-              Company
+            <span className="ml-2 text-xl font-bold tracking-wide text-white">
+              <span className='text-green-600'>P</span>hone<span className='text-green-600'>F</span>ix
             </span>
           </a>
           <div className="mt-6 lg:max-w-sm">
             <p className="text-sm text-white">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam.
+              PhoneFix is such a platform where our use can easily express their opinions by their reviews. We always try to bring our clients demand to our work and
+              try to improve user experience.
             </p>
             <p className="mt-4 text-sm text-white">
-              Eaque ipsa quae ab illo inventore veritatis et quasi architecto
-              beatae vitae dicta sunt explicabo.
+              I am really glad to help you. If you have any question or recommendations for me then please feel free and give your honest feed back. Thanks
             </p>
           </div>
         </div>
