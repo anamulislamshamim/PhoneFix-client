@@ -1,9 +1,14 @@
 import React, { useEffect } from 'react';
+import { useContext } from 'react';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { authContext } from '../../contexts/AuthContext';
 import useTitle from '../../hooks/useTitle';
 import ReviewTableRow from '../ReviewTableRow/ReviewTableRow';
 
 export const MyReviews = () => {
+    const { logOut, user } = useContext(authContext);
+    const email = user.email;
     const title = useTitle();
     title("MyReviews-PhoneFix");
     const [reviews, setReviews] = useState([]);
@@ -18,8 +23,18 @@ export const MyReviews = () => {
         })
     }
     useEffect(() => {
-        fetch("http://localhost:4000/reviews")
-          .then(res => res.json())
+        fetch(`http://localhost:4000/reviews/${ email }`, {
+            headers:{
+                auth_token:`Bearer ${ localStorage.getItem('access_token')}`
+            }
+        })
+          .then(res => {
+            if(res.status === 401 || res.status === 403 ){
+                toast.error("Unauthorized access!");
+                logOut();
+            };
+            return res.json();
+          })
           .then(datas => {
             if (datas.length > 0) {
               setReviews(datas);
@@ -27,7 +42,7 @@ export const MyReviews = () => {
     
           })
           .catch(err => console.log(err));
-      }, []);
+      }, [ email, logOut ]);
     return (
         <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20" style={{minHeight:"55vh"}}>
             <div className="overflow-x-auto w-full">

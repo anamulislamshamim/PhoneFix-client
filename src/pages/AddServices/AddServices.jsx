@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 import { toast } from 'react-toastify';
+import { authContext } from '../../contexts/AuthContext';
 import useTitle from '../../hooks/useTitle';
 import ServiceTableRow from '../ServiceTableRow/ServiceTableRow';
 
 export const AddServices = () => {
+    const { logOut, user } = useContext(authContext);
+    const email = user.email;
     const title = useTitle();
     title("AddService-PhoneFix");
     const [services, setServices] = useState([]);
@@ -20,12 +24,22 @@ export const AddServices = () => {
         })
     };
     useEffect(() => {
-        fetch("http://localhost:4000/services")
-            .then(res => res.json())
+        fetch(`http://localhost:4000/add-service/${ email }`, {
+          headers:{
+            auth_token:`Bearer ${ localStorage.getItem("access_token")}`
+          }
+        })
+            .then(res => {
+              if(res.status === 401 || res.status === 403){
+                toast.error("Unauthorized access!");
+                logOut();
+              }
+              return res.json();
+            })
             .then(data => {
                 setServices(data);
             })
-    }, []);
+    },[ email, logOut ]);
     const addServiceHandeler = (event) => {
         event.preventDefault();
         const form = event.target;

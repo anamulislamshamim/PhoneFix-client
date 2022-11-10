@@ -130,7 +130,7 @@ export const Register = () => {
                                 <div className="mb-1 sm:mb-2">
                                     <input
                                         className='mr-2'
-                                        onClick={() => setAccept(!accept)}
+                                        onChange={() => setAccept(!accept)}
                                         type="checkbox"
                                         id="checkbox"
                                         name="checkbox"

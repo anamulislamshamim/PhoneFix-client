@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ReviewTableRow = ({ review, deleteHandeler }) => {
-    console.log("review: ", review);
     return (
         <tr>
             <th>
