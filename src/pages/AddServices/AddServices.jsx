@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import useTitle from '../../hooks/useTitle';
 import ServiceTableRow from '../ServiceTableRow/ServiceTableRow';
 
 export const AddServices = () => {
+    const title = useTitle();
+    title("AddService-PhoneFix");
     const [services, setServices] = useState([]);
     const deleteHandeler = (id) => {
         fetch(`http://localhost:4000/service/delete/${ id }`,{

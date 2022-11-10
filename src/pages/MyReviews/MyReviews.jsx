@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
+import useTitle from '../../hooks/useTitle';
 import ReviewTableRow from '../ReviewTableRow/ReviewTableRow';
 
 export const MyReviews = () => {
+    const title = useTitle();
+    title("MyReviews-PhoneFix");
     const [reviews, setReviews] = useState([]);
     const deleteHandeler = (id) => {
         fetch(`http://localhost:4000/my-review/delete/${ id }`,{

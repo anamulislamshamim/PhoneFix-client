@@ -1,11 +1,14 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import useTitle from '../../hooks/useTitle';
 import Reviews from '../Reviews/Reviews';
 import ServiceCard from '../ServiceCard/ServiceCard';
 
 export const Services = () => {
     const [services, setServices] = useState([]);
+    const title = useTitle();
+    title("Service-PhoneFix");
     useEffect(() => {
         fetch("http://localhost:4000/services")
             .then(res => res.json())

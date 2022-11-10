@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ReviewCard = ({ review, deleteReview }) => {
     return (
@@ -10,7 +11,7 @@ const ReviewCard = ({ review, deleteReview }) => {
                 <p>
                     {
                         review.myreview ? <>
-                            <button className="btn btn-ghost text-gray-800 p-1 mr-3">Update</button>
+                            {/* <Link to=""><button className="btn btn-ghost text-gray-800 p-1 mr-3">Update</button></Link> */}
                             <button onClick={ () => deleteReview(review._id) } className="btn btn-ghost text-red-800 p-1">Delete</button>
                         </> : ""
                     }
